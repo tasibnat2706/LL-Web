@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <title>Levy Lab Participant Portal</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body>
@@ -28,6 +31,9 @@
 
 <button onclick="goToResults()">View My Results</button>
 
+<!-- Div to display participant data -->
+<div id="participantResults" style="margin-top:20px;"></div>
+
 <hr style="margin:30px 0">
 
 <p>You can also explore our overall study findings.</p>
@@ -45,21 +51,48 @@ View General Study Results
 </footer>
 
 <script>
+  // Initialize Supabase
+  const supabaseUrl = 'https://YOUR_PROJECT.supabase.co';  // Replace with your Supabase URL
+  const supabaseKey = 'YOUR_ANON_KEY';                     // Replace with your anon public key
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-function goToResults(){
+  async function goToResults() {
+    const id = document.getElementById("participantId").value.trim();
+    if (!id) {
+      alert("Please enter your ID");
+      return;
+    }
 
-const id = document.getElementById("participantId").value.trim();
+    const resultsDiv = document.getElementById('participantResults');
 
-if(!id){
-alert("Please enter your ID");
-return;
-}
+    try {
+      const { data, error } = await supabase
+        .from('users')       // Your table name in Supabase
+        .select('*')
+        .eq('id', id)
+        .single();
 
-window.location.href = "results.html?id=" + id;
+      if (error || !data) {
+        resultsDiv.innerHTML = `<p style="color:red;">ID not found. Please check your participant ID.</p>`;
+        return;
+      }
 
-}
+      // Display participant data
+      resultsDiv.innerHTML = `
+        <h3>Your Results:</h3>
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Score:</strong> ${data.score}</p>
+      `;
 
+    } catch (err) {
+      resultsDiv.innerHTML = `<p style="color:red;">An error occurred. Please try again later.</p>`;
+      console.error(err);
+    }
+  }
 </script>
+
+</body>
+</html>
 
 </body>
 
