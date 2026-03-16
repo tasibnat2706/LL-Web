@@ -1,102 +1,113 @@
-/* Body and overall layout */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:linear-gradient(135deg,#e8f4ff,#ffffff);
+min-height:100vh;
+display:flex;
+flex-direction:column;
 }
 
 /* Header */
-.site-header {
-    text-align: center;
-    padding: 40px 20px 20px 20px;
-    background-color: #007bff;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+header{
+background:#0a4da3;
+color:white;
+text-align:center;
+padding:40px 20px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
-.site-header h1 {
-    margin: 0;
-    font-size: 2.5em;
+header h1{
+margin:0;
+font-size:2.5em;
 }
 
-.site-header p {
-    margin-top: 10px;
-    font-size: 1.2em;
+header p{
+margin-top:10px;
+opacity:0.9;
 }
 
-/* Center container for welcome box */
-.center-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+/* Center container */
+
+.main-container{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:40px;
 }
 
-/* Welcome box */
-.welcome-box {
-    background-color: #e6f7ff;
-    border-radius: 15px;
-    padding: 40px 30px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-    transition: transform 0.2s;
+/* Welcome card */
+
+.welcome-card{
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+max-width:400px;
+width:100%;
+transition:transform .2s;
 }
 
-.welcome-box:hover {
-    transform: translateY(-5px);
+.welcome-card:hover{
+transform:translateY(-5px);
 }
 
-/* Input and button */
-input {
-    width: 80%;
-    padding: 12px;
-    margin-top: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+.welcome-card h2{
+margin-top:0;
+color:#0a4da3;
 }
 
-button {
-    padding: 12px 20px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
+/* Input */
+
+input{
+width:85%;
+padding:12px;
+margin-top:15px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Button */
+
+button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+background:#0a4da3;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:background .2s;
 }
 
-/* Results box */
-#results {
-    margin-top: 20px;
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #ffffffcc;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: left;
-    font-size: 16px;
+button:hover{
+background:#063574;
+}
+
+/* Results card */
+
+#results{
+margin-top:25px;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 8px 25px rgba(0,0,0,0.1);
+max-width:400px;
+width:100%;
+display:none;
 }
 
 /* Footer */
-.site-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f2f2f2;
-    font-size: 14px;
-    color: #555;
+
+footer{
+text-align:center;
+padding:20px;
+background:#f2f2f2;
+color:#555;
+font-size:14px;
 }
