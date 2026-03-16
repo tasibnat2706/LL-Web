@@ -26,9 +26,7 @@
 <p>Please enter your participant ID to view your personal results.</p>
 
 <input type="text" id="participantId" placeholder="Enter your ID">
-
 <br>
-
 <button onclick="goToResults()">View My Results</button>
 
 <!-- Div to display participant data -->
@@ -37,13 +35,11 @@
 <hr style="margin:30px 0">
 
 <p>You can also explore our overall study findings.</p>
-
 <button onclick="window.location.href='study-results.html'">
 View General Study Results
 </button>
 
 </div>
-
 </div>
 
 <footer>
@@ -51,13 +47,22 @@ View General Study Results
 </footer>
 
 <script>
-  // Initialize Supabase
-  const supabaseUrl = 'https://qhagmocximrpcnyrchgo.supabase.co';  // Replace with your Supabase URL
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoYWdtb2N4aW1ycGNueXJjaGdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2OTAyNTYsImV4cCI6MjA4OTI2NjI1Nn0.rNfgLWuK2TV-v2xrT_AESFvM4AvwHqss7PUlw28ZRaU';                     // Replace with your anon public key
+  // -------------------------------
+  // REPLACE THESE WITH YOUR SUPABASE CREDENTIALS
+  // -------------------------------
+  const supabaseUrl = 'https://qhagmocximrpcnyrchgo.supabase.co'; // Supabase Project URL
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoYWdtb2N4aW1ycGNueXJjaGdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2OTAyNTYsImV4cCI6MjA4OTI2NjI1Nn0.rNfgLWuK2TV-v2xrT_AESFvM4AvwHqss7PUlw28ZRaU'; // Supabase anon public key
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // -------------------------------
+  // TEST PARTICIPANT (Add this row in Supabase if not already)
+  // id: test001, name: Alice, score: 42
+  // -------------------------------
 
   async function goToResults() {
     const id = document.getElementById("participantId").value.trim();
+    console.log("Entered ID:", id);
+
     if (!id) {
       alert("Please enter your ID");
       return;
@@ -67,10 +72,12 @@ View General Study Results
 
     try {
       const { data, error } = await supabase
-        .from('users')       // Your table name in Supabase
+        .from('users')       // Your table name
         .select('*')
         .eq('id', id)
         .single();
+
+      console.log("Supabase data:", data, "Error:", error);
 
       if (error || !data) {
         resultsDiv.innerHTML = `<p style="color:red;">ID not found. Please check your participant ID.</p>`;
@@ -92,8 +99,4 @@ View General Study Results
 </script>
 
 </body>
-</html>
-
-</body>
-
 </html>
