@@ -1,28 +1,28 @@
 async function showResults() {
-    const id = document.getElementById("participantId").value.trim();
-    const resultsDiv = document.getElementById("results");
 
-    if (!id) {
-        resultsDiv.innerHTML = "<p>Please enter an ID.</p>";
-        return;
-    }
+const id = document.getElementById("participantId").value.trim();
+const resultsDiv = document.getElementById("results");
 
-    try {
-        const response = await fetch('data.json');
-        const data = await response.json();
+const response = await fetch("data.json");
+const data = await response.json();
 
-        if(data[id]) {
-            resultsDiv.innerHTML = `
-                <h3>Hello ${data[id].name}</h3>
-                <p><strong>Summary:</strong> ${data[id].summary}</p>
-                <p><strong>Your Data:</strong> Heart Rate: ${data[id].data.heart_rate}, Blood Pressure: ${data[id].data.blood_pressure}</p>
-                <p><strong>Interpretation:</strong> ${data[id].interpretation}</p>
-            `;
-        } else {
-            resultsDiv.innerHTML = "<p>ID not found. Please check and try again.</p>";
-        }
-    } catch (err) {
-        resultsDiv.innerHTML = "<p>Error loading data. Try again later.</p>";
-        console.error(err);
-    }
+if(data[id]){
+
+resultsDiv.style.display = "block";
+
+resultsDiv.innerHTML = `
+<h3>Hello ${data[id].name}</h3>
+<p><strong>Summary:</strong> ${data[id].summary}</p>
+<p><strong>Heart Rate:</strong> ${data[id].data.heart_rate}</p>
+<p><strong>Blood Pressure:</strong> ${data[id].data.blood_pressure}</p>
+<p><strong>Interpretation:</strong> ${data[id].interpretation}</p>
+`;
+
+}else{
+
+resultsDiv.style.display = "block";
+resultsDiv.innerHTML = "<p>ID not found.</p>";
+
+}
+
 }
