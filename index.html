@@ -1,12 +1,22 @@
 <body>
-    <div class="welcome-box">
-        <h2>Welcome to the Levy Lab!</h2>
-        <p>Enter your ID:</p>
-        <input type="text" id="participantId" placeholder="Your ID">
-        <button onclick="showResults()">Enter</button>
-    </div>
+    <header class="site-header">
+        <h1>Levy Lab Participant Portal</h1>
+        <p>Welcome! Enter your ID to see your results.</p>
+    </header>
 
-    <div id="results"></div>
+    <main class="center-container">
+        <div class="welcome-box">
+            <h2>Welcome to the Levy Lab!</h2>
+            <input type="text" id="participantId" placeholder="Your ID">
+            <button onclick="showResults()">Enter</button>
+        </div>
+
+        <div id="results"></div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Levy Lab</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
