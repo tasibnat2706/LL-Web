@@ -1,22 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Levy Lab Participant Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-    <header class="site-header">
-        <h1>Levy Lab Participant Portal</h1>
-        <p>Welcome! Enter your ID to see your results.</p>
-    </header>
 
-    <main class="center-container">
-        <div class="welcome-box">
-            <h2>Welcome to the Levy Lab!</h2>
-            <input type="text" id="participantId" placeholder="Your ID">
-            <button onclick="showResults()">Enter</button>
-        </div>
+<header>
+<h1>Levy Lab Participant Portal</h1>
+<p>Access your personal research results</p>
+</header>
 
-        <div id="results"></div>
-    </main>
+<div class="main-container">
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Levy Lab</p>
-    </footer>
+<div class="welcome-card">
 
-    <script src="script.js"></script>
+<h2>Welcome to the Levy Lab</h2>
+<p>Please enter your participant ID to view your information.</p>
+
+<input type="text" id="participantId" placeholder="Enter your ID">
+
+<button onclick="showResults()">View My Results</button>
+
+</div>
+
+<div id="results"></div>
+
+</div>
+
+<footer>
+<p>© Levy Lab Research Portal</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
+</html>
