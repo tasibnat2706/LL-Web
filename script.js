@@ -1,8 +1,8 @@
 // -------------------------------
 // REPLACE THESE WITH YOUR SUPABASE CREDENTIALS
 // -------------------------------
-const supabaseUrl = 'https://qhagmocximrpcnyrchgo.supabase.co';  // Supabase Project URL
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoYWdtb2N4aW1ycGNueXJjaGdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2OTAyNTYsImV4cCI6MjA4OTI2NjI1Nn0.rNfgLWuK2TV-v2xrT_AESFvM4AvwHqss7PUlw28ZRaU';                     // Supabase anon public key
+const supabaseUrl = 'https://YOUR_PROJECT.supabase.co';
+const supabaseKey = 'YOUR_ANON_KEY';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function goToResults() {
@@ -14,7 +14,6 @@ async function goToResults() {
     }
 
     try {
-        // Check if participant exists
         const { data, error } = await supabase
             .from('users')
             .select('id')
@@ -26,7 +25,6 @@ async function goToResults() {
             return;
         }
 
-        // Redirect if ID exists
         window.location.href = "results.html?id=" + id;
 
     } catch (err) {
