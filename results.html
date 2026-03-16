@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Results</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>Your Research Results</h1>
+</header>
+
+<div class="main-container">
+
+<div id="results"></div>
+
+</div>
+
+<script>
+
+async function loadResults(){
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const resultsDiv = document.getElementById("results");
+
+const response = await fetch("data.json");
+const data = await response.json();
+
+if(data[id]){
+
+resultsDiv.innerHTML = `
+<div class="welcome-card">
+<h2>Hello ${data[id].name}</h2>
+<p><strong>Summary:</strong> ${data[id].summary}</p>
+<p><strong>Heart Rate:</strong> ${data[id].data.heart_rate}</p>
+<p><strong>Blood Pressure:</strong> ${data[id].data.blood_pressure}</p>
+<p><strong>Interpretation:</strong> ${data[id].interpretation}</p>
+</div>
+`;
+
+}else{
+
+resultsDiv.innerHTML = "<p>ID not found.</p>";
+
+}
+
+}
+
+loadResults();
+
+</script>
+
+</body>
+</html>
