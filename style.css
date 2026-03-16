@@ -84,12 +84,6 @@ button:hover{
   background:#063574;
 }
 
-/* Results card */
-#welcome-card, #results, .welcome-card{
-  margin-top:25px;
-  display:block;
-}
-
 /* Footer */
 footer{
   text-align:center;
